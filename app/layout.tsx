@@ -4,8 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import Steps from "@/components/Steps";
+
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -32,10 +31,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
       <Header/>
-      <Hero/>
-      <Steps/>
-      <Footer/>
       {children}
+      <Footer/>
+      
       </ThemeProvider>
       </body>
     </html>

@@ -6,13 +6,13 @@ function HeaderDesktop() {
       <nav>
         <ul className='flex gap-4'>
           <li>
-            <a href="#inicio">Inicio</a>
+            <a href="/">Inicio</a>
           </li>
           <li>
-            <a href="#empezar">Empezar</a>
+            <a href="/empezar">Empezar</a>
           </li>
           <li>
-            <a href="#faq">Preguntas frecuentes</a>
+            <a href="/faq">Preguntas frecuentes</a>
           </li>
         </ul>
       </nav>
