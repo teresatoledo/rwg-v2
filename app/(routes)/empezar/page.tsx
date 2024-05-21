@@ -50,7 +50,7 @@ function Page() {
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (type === '' || focus === '' || time === '') {
+    if (type === '' || focus === '' || time === '' || level === '') {
       setError('');
     } else {
       setError('hidden');
