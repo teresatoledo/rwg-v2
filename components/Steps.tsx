@@ -6,7 +6,7 @@ import Image from "next/image"
 function Steps() {
   const router = useRouter()
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 justify-evenly gap-3 sm:ml-4 pb-4 md:pb-0 min-[1400px]:h-[350px]">
+    <div className="grid grid-cols-1 sm:grid-cols-3 justify-evenly gap-3 sm:ml-4 pb-4 md:pb-0 min-[1400px]:h-[350px] mt-10">
       <div className="flex flex-col items-center justify-center gap-2 border border-slate-500 rounded-md py-2 mx-2 sm:h-60">
         <h4 className="text-lg font-bold">Paso 1:</h4>
         <div className="h-30 flex flex-col items-center">

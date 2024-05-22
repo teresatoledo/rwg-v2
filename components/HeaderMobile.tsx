@@ -11,11 +11,11 @@ function HeaderMobile() {
         <Menu/>
       </PopoverTrigger>
       <PopoverContent className='flex flex-col justify-center items-center'>
-        <Link href="#inicio" className='block py-1'>Inicio</Link>
+        <Link href="/" className='block py-1'>Inicio</Link>
         <Separator/>
-        <Link href="#empezar" className='block py-1'>Empezar</Link>
+        <Link href="/empezar" className='block py-1'>Empezar</Link>
         <Separator/>
-        <Link href="#faq" className='block py-1'>Preguntas frecuentes</Link>
+        <Link href="/faq" className='block py-1'>Preguntas frecuentes</Link>
       </PopoverContent>
     </Popover>
   )

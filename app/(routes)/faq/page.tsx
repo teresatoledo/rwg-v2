@@ -25,6 +25,11 @@ function Page() {
     },
     {
       id: 5,
+      question: 'He generado un entrenamiento, pero no conozco algún ejercicio, ¿qué hago?',
+      answer: 'Todos los ejercicios te permiten hacer clic sobre ellos, esto abrirá una ventana en la que podrás reproducir un breve vídeo explicativo de cada movimiento. Si el movimiento te resulta demasiado complejo, siempre podrás generar un nuevo entrenamiento cambiando a un nivel más sencillo.'
+    },
+    {
+      id: 6,
       question: '¿Registrarme tiene algún beneficio adicional?',
       answer: 'Sí, los usuarios registrados podrán acceder a un histórico de sus WOD favoritos, así como un registro de medidas y peso corporal, y de RM. Además podrás calcular la ingesta calórica necesaria según tus objetivos.'
     },
