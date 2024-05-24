@@ -4,7 +4,6 @@ import Image from 'next/image'
 import React from 'react'
 import HeaderDesktop from './HeaderDesktop'
 import HeaderMobile from './HeaderMobile'
-import { ModeToggle } from './ModeToggle'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -18,7 +17,6 @@ function Header() {
       <div className="flex sm:hidden"><HeaderMobile/></div>
       <div className="flex items-center justify-between gap-2 sm:gap-7">
         <Link href={'/profile'}> <User/> </Link>
-        <ModeToggle/>
       </div>
     </header>
   )

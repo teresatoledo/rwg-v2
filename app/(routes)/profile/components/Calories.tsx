@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import React, { ChangeEvent, useState } from 'react';
@@ -72,12 +73,12 @@ const Calories = () => {
 
   const handleHeight = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    const heightNum = Math.min(Math.max(parseInt(value), 0), 100);
+    const heightNum = Math.min(Math.max(parseInt(value), 0), 230);
     setHeight(heightNum.toString());
   };
 
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center mx-auto'>
       <h2 className="text-lg font-semibold mb-4">Calculadora de calorías</h2>
       <div className="flex flex-col space-y-4">
         <Select value={gender} onValueChange={handleGender}>
@@ -98,6 +99,7 @@ const Calories = () => {
           max="100"
           value={age}
           onChange={handleAge}
+          className='w-[250px]'
         />
         <Input
           type="number"
@@ -106,14 +108,16 @@ const Calories = () => {
           max="100"
           value={weight}
           onChange={handleWeight}
+          className='w-[250px]'
         />
         <Input
           type="number"
           placeholder="Altura (cm)"
           min="0"
-          max="100"
+          max="230"
           value={height}
           onChange={handleHeight}
+          className='w-[250px]'
         />
         <Select value={activityLevel} onValueChange={handleActivity}>
           <SelectTrigger className="w-[250px]">
@@ -129,7 +133,7 @@ const Calories = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <button onClick={handleCalculate} className="bg-blue-500 text-white py-2 px-4 rounded">Calcular Calorías</button>
+        <Button onClick={handleCalculate} className='w-[250px]'>Calcular calorías</Button>
         {calories !== 0 && (
           <div className="mt-4">
             <p>Calorías Necesarias: {calories} kcal/día</p>

@@ -20,8 +20,8 @@ function Page() {
   // }, []);
 
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div className='flex'>
+    <div className="h-screen flex justify-center items-center ">
+      <div className='flex bg-white w-1/2'>
         <VerticalMenu selectedOption={selectedOption} onSelectOption={setSelectedOption} />
         <div className="flex-grow p-4">
           {selectedOption === 'datosPersonales' && <PersonalData userData={userData} />}

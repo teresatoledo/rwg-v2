@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ThemeProvider } from "@/components/theme-provider";
+
 import Footer from "@/components/Footer";
 
 
@@ -24,19 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={urbanist.className}>
-      <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+      
       <div className="sm:bg-[url('/fondo.jpg')] bg-no-repeat bg-cover">
         <Header/>
         {children}
         <Footer/>
       </div>
       
-      </ThemeProvider>
+      
       </body>
     </html>
   );
