@@ -1,11 +1,12 @@
 "use client"
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, User } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import HeaderDesktop from './HeaderDesktop'
 import HeaderMobile from './HeaderMobile'
 import { ModeToggle } from './ModeToggle'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 function Header() {
   const router = useRouter()
@@ -16,9 +17,7 @@ function Header() {
       <div className="items-center justify-between hidden sm:flex"><HeaderDesktop/></div>
       <div className="flex sm:hidden"><HeaderMobile/></div>
       <div className="flex items-center justify-between gap-2 sm:gap-7">
-        <a href='https://www.linkedin.com/in/teresatoledo' target='_blank'><Linkedin /></a>
-        <a href='https://github.com/teresatoledo' target='_blank'><Github /></a>
-        <a href='mailto:teresatoledolara@gmail.com'><Mail /></a>
+        <Link href={'/profile'}> <User/> </Link>
         <ModeToggle/>
       </div>
     </header>

@@ -306,11 +306,11 @@ function Generator() {
   )}
   <Button onClick={handleStartTimer}>Iniciar temporizador</Button>
 </div>
-        <div className={`border border-blue-300 flex flex-col items-center justify-center h-36 px-1 text-center sm:h-28 mx-3 sm:w-[570px] sm:mx-auto my-10 rounded-md  ${login}`}>
-        <p>¿Quieres guardar tus entrenamientos y hacer un seguimiento de tus marcas?</p>
+        <div className={`border border-blue-300 sm:flex sm:flex-col items-center justify-center px-1 text-center sm:h-28 mx-3 sm:w-[570px] sm:mx-auto sm:my-10 rounded-md  sm:${login}`}>
+        <p className='dark:text-black'>¿Quieres guardar tus entrenamientos y hacer un seguimiento de tus marcas?</p>
         <Button onClick={() => router.push('/login')} className='mt-3'>Inicia sesión</Button>
       </div>
-      {showPopup && <Popup />}
+      {showPopup && <Popup onClose={() => setShowPopup(false)} />}
     </div>
   );
 }

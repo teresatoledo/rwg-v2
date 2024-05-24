@@ -31,7 +31,7 @@ function Page() {
     {
       id: 6,
       question: '¿Registrarme tiene algún beneficio adicional?',
-      answer: 'Sí, los usuarios registrados podrán acceder a un histórico de sus WOD favoritos, así como un registro de medidas y peso corporal, y de RM. Además podrás calcular la ingesta calórica necesaria según tus objetivos.'
+      answer: 'Sí, los usuarios registrados podrán acceder a un histórico de sus WOD favoritos, así como un registro de RM. Además podrás calcular la ingesta calórica necesaria según tus objetivos.'
     },
   ]
   return (
