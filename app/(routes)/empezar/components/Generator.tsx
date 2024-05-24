@@ -30,6 +30,8 @@ function Generator() {
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [login, setLogin] = useState<string>('');
   const [showPopup, setShowPopup] = useState(false);
+  const [countdown, setCountdown] = useState<number | null>(null);
+  const [isCountdownRunning, setIsCountdownRunning] = useState<boolean>(false);
 
   const playSoundStart = () => {
     const sound = new Howl({
@@ -138,32 +140,48 @@ function Generator() {
       const repetitions = Math.floor(Math.random()* (10- 5 + 1) + 5);
       return {exercise, repetitions}
     });
-    if (type === 'emom' && parseInt(finalTime) > 0) {
-      finalExercises = finalExercises.map((exercise, index) => {
-        const repetitions = Math.floor(Math.random() * (10-5+1)) + 5;
-        return {
-          ...exercise,
-          repetitions: repetitions,
-        }
-      })
-    } else if (type === 'forTime') {
-      finalExercises.forEach((exercise) => {
-        exercise.repetitions = Math.floor(Math.random() * 20) + 1;
-      });
-    } else if (type === 'forQuality') {
-      finalExercises.forEach((exercise) => {
-        exercise.repetitions = Math.floor(Math.random() * 5) + 1;
+    if (type === 'EMOM') {
+      const numMinutes = parseInt(finalTime);
+      let numExercises = Math.floor(numMinutes / 1); // Redondeamos hacia abajo para obtener un número inicial
+      
+      if (numExercises < 5) {
+        numExercises = 5;
+      }
+      
+      // Si el número de ejercicios no es divisible entre el número de minutos,
+      // ajustamos el número de ejercicios para que sea divisible
+      while (numExercises % numMinutes !== 0) {
+        numExercises++;
+      }
+  
+      finalExercises = finalExercises.slice(0, numExercises).map((exerciseEntry) => {
+        const repetitions = Math.floor(Math.random()* (10- 5 + 1) + 5);
+        return {exercise: exerciseEntry.exercise, repetitions}
       });
     }
-    setSelectedExercises(finalExercises)
+  
+    setSelectedExercises(finalExercises);
   }
   
   const handleStartTimer = () => {
-    playSoundStart(); 
-    setTimeout(() => {
-      setTimer(parseInt(finalTime) * 60); 
-      setIsRunning(true);
-    }, 3000); 
+    setIsCountdownRunning(true);
+    setCountdown(3);
+    playSoundStart();
+
+    const countdownInterval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev && prev > 1) {
+          return prev - 1;
+        } else {
+          clearInterval(countdownInterval);
+          setIsCountdownRunning(false);
+          setCountdown(null);
+          setTimer(parseInt(finalTime) * 60);
+          setIsRunning(true);
+          return null;
+        }
+      });
+    }, 1000);
   };
 
   const formatTime = (time: number) => {
@@ -173,9 +191,9 @@ function Generator() {
   };
   const router = useRouter()
   return (
-    <div className="sm:bg-[url('/fondo.jpg')] bg-no-repeat bg-cover h-screen relative">
+    <div className="h-screen">
       
-      <div className='flex flex-col sm:flex-row gap-9 justify-evenly items-center pt-10'>
+      <div className='flex flex-col sm:flex-row gap-9 justify-center items-center pt-24'>
         <div className='flex flex-col gap-7'>
           <Select value={type} onValueChange={handleType}>
             <SelectTrigger className="w-[180px]">
@@ -275,15 +293,24 @@ function Generator() {
           </div>
         </div>
       </div>
-      <div className={`flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-10 my-9 ${resultBox}`}>
-            <p className='text-2xl mb-2'>{formatTime(timer)}</p>
-            <Button onClick={handleStartTimer}>Iniciar temporizador</Button>
-          </div>
+      <div className={`flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-10 my-12 ${resultBox}`}>
+  {isCountdownRunning ? (
+    <svg width="100" height="100">
+      <circle className="countdown-circle" cx="50" cy="50" r="20" fill="none" strokeWidth="5" stroke="#000" style={{ margin: "5px", padding: "0" }} />
+      <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="20">
+        {countdown}
+      </text>
+    </svg>
+  ) : (
+    <p className='text-2xl mb-2'>{formatTime(timer)}</p>
+  )}
+  <Button onClick={handleStartTimer}>Iniciar temporizador</Button>
+</div>
         <div className={`border border-blue-300 flex flex-col items-center justify-center h-36 px-1 text-center sm:h-28 mx-3 sm:w-[570px] sm:mx-auto my-10 rounded-md  ${login}`}>
         <p>¿Quieres guardar tus entrenamientos y hacer un seguimiento de tus marcas?</p>
         <Button onClick={() => router.push('/login')} className='mt-3'>Inicia sesión</Button>
       </div>
-      { <Popup />}
+      {showPopup && <Popup />}
     </div>
   );
 }

@@ -2,14 +2,46 @@
   @tailwind components;
   @tailwind utilities;
 
-  .bg-gradient-radial {
-    background: radial-gradient(circle, rgba(255,255,255,1) 20%, rgba(59, 130, 246, 1) 100%);
+  @keyframes fill {
+    from {
+      stroke-dashoffset: 125; /* Circunferencia completa */
+    }
+    to {
+      stroke-dashoffset: 0; /* Sin circunferencia (completamente relleno) */
+    }
   }
   
+  .countdown-circle {
+    stroke-dasharray: 125; /* Longitud de la circunferencia */
+    stroke-dashoffset: 125; /* Circunferencia completa al inicio */
+    animation: fill 3s linear forwards; /* Duración de la animación */
+  }
   
-  
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
-  
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

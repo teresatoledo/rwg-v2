@@ -30,9 +30,11 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-      <Header/>
-      {children}
-      <Footer/>
+      <div className="sm:bg-[url('/fondo.jpg')] bg-no-repeat bg-cover">
+        <Header/>
+        {children}
+        <Footer/>
+      </div>
       
       </ThemeProvider>
       </body>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 function Hero() {
   const router = useRouter()
   return (
-<div className="flex items-center justify-center pb-10 mx-auto relative sm:bg-[url('/fondo.jpg')] bg-no-repeat bg-cover h-screen">
+<div className="flex items-center justify-center pb-10 mx-auto relative h-screen">
   <div className='flex flex-col justify-center items-center gap-2 pb-4 min-[1024px]:mt-20 '>
     <h3 className='sm:text-xl text-center px-10 mt-3 h-20 border-2 border-blue-300 flex just items-center rounded-md'>
       Una herramienta para cuando tienes la motivación, pero te faltan las ideas.
@@ -23,7 +23,7 @@ function Hero() {
         <div>Como quieras</div>
       </div>
     </div>
-    <Button className='mt-3' onClick={() => router.push('/empezar')}>Empezar</Button>
+    <Button className='mt-3' onClick={() => router.push('/empezar')}>Entrenar</Button>
   </div>      
 </div>
 

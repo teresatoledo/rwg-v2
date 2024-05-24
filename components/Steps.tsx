@@ -10,7 +10,7 @@ function Steps() {
       <div className="flex flex-col items-center justify-center gap-2 border border-slate-500 rounded-md py-2 mx-2 sm:h-60">
         <h4 className="text-lg font-bold">Paso 1:</h4>
         <div className="h-30 flex flex-col items-center">
-          <p>Haz clic en el botón empezar.</p>
+          <p>Haz clic en el botón Entrenar.</p>
          
         </div>
       </div>

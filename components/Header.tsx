@@ -10,9 +10,9 @@ import { useRouter } from 'next/navigation'
 function Header() {
   const router = useRouter()
   return (
-    <header className="flex items-center justify-between p-4 mx-auto cursor-pointer sm:max-w-4xl md:max-w-6xl">
+    <header className="flex items-center justify-between p-4 mx-auto cursor-pointer sm:max-w-4xl md:max-w-6xl ">
       {/* <Image src={} alt='RWG logo' onClick={()=> router.push('/')}/> */}
-      <p>Logo</p>
+      <p className='text-white'>Logo</p>
       <div className="items-center justify-between hidden sm:flex"><HeaderDesktop/></div>
       <div className="flex sm:hidden"><HeaderMobile/></div>
       <div className="flex items-center justify-between gap-2 sm:gap-7">

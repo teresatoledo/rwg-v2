@@ -13,7 +13,7 @@ function HeaderMobile() {
       <PopoverContent className='flex flex-col justify-center items-center'>
         <Link href="/" className='block py-1'>Inicio</Link>
         <Separator/>
-        <Link href="/empezar" className='block py-1'>Empezar</Link>
+        <Link href="/empezar" className='block py-1'>Entrenar</Link>
         <Separator/>
         <Link href="/faq" className='block py-1'>Preguntas frecuentes</Link>
       </PopoverContent>
