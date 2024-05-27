@@ -3,27 +3,27 @@ import React from 'react'
 
 const VerticalMenu = ({ selectedOption, onSelectOption }) => {
   return (
-    <div className="flex flex-col justify-center bg-white p-4">
+    <div className="flex flex-row sm:flex-col gap-2 justify-center bg-white p-4">
       <button
-        className={`py-2 px-4 mb-2 rounded ${selectedOption === 'datosPersonales' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
+        className={`text-sm sm:text-md py-2 px-2 sm:px-4 mb-2 rounded ${selectedOption === 'datosPersonales' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
         onClick={() => onSelectOption('datosPersonales')}
       >
-        Datos Personales
+        Datos personales
       </button>
       <button
-        className={`py-2 px-4 mb-2 rounded ${selectedOption === 'wod' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
+        className={`text-sm sm:text-md py-2 px-2 sm:px-4 mb-2 rounded ${selectedOption === 'wod' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
         onClick={() => onSelectOption('wod')}
       >
         WOD
       </button>
       <button
-        className={`py-2 px-4 mb-2 rounded ${selectedOption === 'rm' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
+        className={`text-sm sm:text-md py-2 px-2 sm:px-4 mb-2 rounded ${selectedOption === 'rm' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
         onClick={() => onSelectOption('rm')}
       >
         RM
       </button>
       <button
-        className={`py-2 px-4 mb-2 rounded ${selectedOption === 'calculadora' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
+        className={`text-sm sm:text-md py-2 px-2 sm:px-4 mb-2 rounded ${selectedOption === 'calculadora' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border-2 border-slate-300'}`}
         onClick={() => onSelectOption('calculadora')}
       >
         Calculadora

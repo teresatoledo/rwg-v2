@@ -3,174 +3,203 @@ export interface Exercise {
   link: string;
   focus: 'haltero' | 'gimnasticos' | 'endurance';
   level: string[];
+  id: number;
 }
 export const exercises: Exercise[] = [
   {
     name: 'Squat snatch',
     link: "https://www.youtube.com/watch?v=4v02go3uTBc&ab_channel=CrossFitSANTIAGO",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 1,
   },
   {
     name: 'Power snatch',
     link: "https://www.youtube.com/watch?v=TL8SMp7RdXQ",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 2,
   },
   {
     name: 'Squat clean',
     link: "https://www.youtube.com/watch?v=Ty14ogq_Vok",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 3,
   },
   {
     name: 'Power clean',
     link: "https://www.youtube.com/watch?v=KwYJTpQ_x5A",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 4,
   },
   {
     name: 'Clean and jerk',
     link: "https://www.youtube.com/watch?v=PjY1rH4_MOA",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 5,
   },
   {
     name: 'Push jerk',
     link: "https://www.youtube.com/watch?v=VrHNJXoSyXw",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 6,
   },
   {
     name: 'Split jerk',
     link: "https://www.youtube.com/watch?v=GUDkOtraHHY",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 7,
   },
   {
     name: 'STOH',
     link: "https://www.youtube.com/watch?v=UUcXwF4shCg",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 8,
   },
   {
     name: 'GTOH',
     link: "https://www.youtube.com/watch?v=5nyasj1quW0",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 9,
   },
   {
     name: 'Dumbell snatch',
     link: "https://www.youtube.com/watch?v=3mlhF3dptAo",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 10,
   },
   {
     name: 'Dumbell clean',
     link: "https://www.youtube.com/watch?v=CUaxieWW0tw",
     focus: 'haltero',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 11,
   },
   {
     name: 'Pull ups',
     link: "https://www.youtube.com/watch?v=lzRo-4pq_AY",
     focus: 'gimnasticos',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 12,
   },
   {
     name: 'Chest to bar',
     link: "https://www.youtube.com/watch?v=p9Stan68FYM",
     focus: 'gimnasticos',
-    level: ['intermedio', 'avanzado']
+    level: ['intermedio', 'avanzado'],
+    id: 13,
   },
   {
     name: 'Bar muscle ups',
     link: "https://www.youtube.com/watch?v=OCg3UXgzftc",
     focus: 'gimnasticos',
-    level: ['avanzado']
+    level: ['avanzado'],
+    id: 14,
   },
   {
     name: 'Toes to bar',
     link: "https://www.youtube.com/watch?v=_03pCKOv4l4",
     focus: 'gimnasticos',
-    level: ['intermedio', 'avanzado']
+    level: ['intermedio', 'avanzado'],
+    id: 15,
   },
   {
     name: 'Knee to elbow',
     link: "https://www.youtube.com/watch?v=L_RsyHdDsBQ",
     focus: 'gimnasticos',
-    level: ['principiante']
+    level: ['principiante'],
+    id: 16,
   },
   {
     name: 'Pull over',
     link: "https://www.youtube.com/watch?v=faJDYEZmueM",
     focus: 'gimnasticos',
-    level: ['intermedio', 'avanzado']
+    level: ['intermedio', 'avanzado'],
+    id: 17,
   },
   {
     name: 'HSPU',
     link: "https://www.youtube.com/watch?v=InRvHNUOlSs",
     focus: 'gimnasticos',
-    level: ['intermedio', 'avanzado']
+    level: ['intermedio', 'avanzado'],
+    id: 18,
   },
   {
     name: 'Pike up',
     link: "https://www.youtube.com/watch?v=x7_I5SUAd00",
     focus: 'gimnasticos',
-    level: ['principiante']
+    level: ['principiante'],
+    id: 19,
   },
   {
     name: 'Strict HSPU',
     link: "https://www.youtube.com/watch?v=0wDEO6shVjc",
     focus: 'gimnasticos',
-    level: ['intermedio', 'avanzado']
+    level: ['intermedio', 'avanzado'],
+    id: 20,
   },
   {
     name: 'HSW',
     link: "https://www.youtube.com/watch?v=I5p2VVDupq8",
     focus: 'gimnasticos',
-    level: ['avanzado']
+    level: ['avanzado'],
+    id: 21,
   },
   {
     name: 'Calorías',
     link: '#',
     focus: 'endurance',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 22,
   },
   {
     name: 'Wall ball',
     link: "https://www.youtube.com/watch?v=fpUD0mcFp_0",
     focus: 'endurance',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 23,
   },
   {
     name: 'Thursters',
     link: "https://www.youtube.com/watch?v=L219ltL15zk",
     focus: 'endurance',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 24,
   },
   {
     name: 'SU',
     link: "https://www.youtube.com/watch?v=hCuXYrTOMxI",
     focus: 'endurance',
-    level: ['principiante']
+    level: ['principiante'],
+    id: 25,
   },
   {
     name: 'DU',
     link: "https://www.youtube.com/watch?v=-tF3hUsPZAI",
     focus: 'endurance',
-    level: ['intermedio', 'avanzado']
+    level: ['intermedio', 'avanzado'],
+    id: 26,
   },
   {
     name: 'Devil press',
     link: "https://www.youtube.com/watch?v=81wWS0rAaDk",
     focus: 'endurance',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 27,
   },
   {
     name: 'Burpees',
     link: "https://www.youtube.com/watch?v=auBLPXO8Fww",
     focus: 'endurance',
-    level: ['principiante', 'intermedio', 'avanzado']
+    level: ['principiante', 'intermedio', 'avanzado'],
+    id: 28,
   },
 ]

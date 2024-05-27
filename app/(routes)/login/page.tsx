@@ -18,6 +18,7 @@ function Page() {
           <form>
             <h3>Crear cuenta</h3>
             <input type="text" name="Name" id="Name" placeholder='Nombre' />
+            <input type="text" name="Apellido" id="Apellido" placeholder='Apellido' />
             <input type="email" name="Email" id="Email" placeholder='Email' />
             <input type="password" name="Password" id="Password" placeholder='Contraseña' />
             <Button>Crear cuenta</Button>

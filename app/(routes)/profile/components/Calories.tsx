@@ -67,7 +67,7 @@ const Calories = () => {
 
   const handleWeight = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    const weightNum = Math.min(Math.max(parseInt(value), 0), 100);
+    const weightNum = Math.min(Math.max(parseInt(value), 0), 200);
     setWeight(weightNum.toString());
   };
 
@@ -79,7 +79,7 @@ const Calories = () => {
 
   return (
     <div className='flex flex-col justify-center items-center mx-auto'>
-      <h2 className="text-lg font-semibold mb-4">Calculadora de calorías</h2>
+      <h2 className="text-lg font-semibold mb-4 hidden sm:flex">Calculadora de calorías</h2>
       <div className="flex flex-col space-y-4">
         <Select value={gender} onValueChange={handleGender}>
           <SelectTrigger className="w-[250px]">
@@ -105,7 +105,7 @@ const Calories = () => {
           type="number"
           placeholder="Peso (kg)"
           min="1"
-          max="100"
+          max="200"
           value={weight}
           onChange={handleWeight}
           className='w-[250px]'
@@ -135,8 +135,8 @@ const Calories = () => {
         </Select>
         <Button onClick={handleCalculate} className='w-[250px]'>Calcular calorías</Button>
         {calories !== 0 && (
-          <div className="mt-4">
-            <p>Calorías Necesarias: {calories} kcal/día</p>
+          <div >
+            <p className='mb-8'><span className='font-bold'>Calorías Necesarias:</span> {calories} kcal/día</p>
           </div>
         )}
       </div>
