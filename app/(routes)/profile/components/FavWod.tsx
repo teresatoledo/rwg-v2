@@ -1,17 +1,40 @@
-// components/WOD.js
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import React from 'react';
+const FavWod = () => {
+  const [favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-const FavWod = ({ favoriteWODs }) => {
+  useEffect(() => {
+    axios.get('/api/get-favorites')
+      .then(response => {
+        setFavorites(response.data.favorites);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching favorites:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
+
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">WOD</h2>
-      {favoriteWODs.map((wod, index) => (
-        <div key={index} className="border rounded p-4 mb-4">
-          <h3 className="text-xl font-semibold">{wod.title}</h3>
-          <p>{wod.description}</p>
-        </div>
-      ))}
+      {favorites.length === 0 ? (
+        <p>Todavía no has guardado ningún WOD como favorito</p>
+      ) : (
+        <ul>
+          {favorites.map((favorite, index) => (
+            <li key={index}>
+              <p>{favorite.type} - {favorite.time} minutos</p>
+              
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
