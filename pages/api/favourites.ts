@@ -1,7 +1,26 @@
 import { connectToDatabase } from "@/utils/db";
 import { verifyToken } from "@/utils/jwt";
 import { NextApiRequest, NextApiResponse } from "next";
+interface Exercise {
+  name: string;
+  repetitions: number;
+}
 
+interface Favourite {
+  id: string;
+  type: string;
+  minutes: number;
+  exercises: Exercise[];
+}
+
+interface FavouriteRow {
+  id: string;
+  type: string;
+  minutes: number;
+  exerciseId: string | null;
+  exerciseName: string | null;
+  repetitions: number | null;
+}
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const token = req.cookies.token;
   if (!token) {
@@ -13,18 +32,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { db } = await connectToDatabase() as { db: any };
 
     if (req.method === 'DELETE') {
-      const favouriteId = req.query.id; // Obtener el ID del favorito a eliminar desde la URL
+      const favouriteId = req.query.id; // Get ID fav from url
       if (!favouriteId) {
         return res.status(400).json({ message: 'ID del favorito es requerido' });
       }
-      // Primero eliminar registros relacionados en la tabla de ejercicios
+      // First, delete from the exercises table
       await db.query('DELETE FROM exercise WHERE favouriteWodId = ?', [favouriteId]);
-      // Luego eliminar el registro de la tabla favouriteWod
+      // Second, delete from favourite table.
       await db.query('DELETE FROM favouriteWod WHERE id = ?', [favouriteId]);
-      res.status(204).end(); // Devolver respuesta 204 No Content para indicar que se ha eliminado correctamente
+      res.status(204).end();
     } else {
-      // Realizar la consulta para obtener los datos de ambas tablas
-      const [rows] = await db.query(`
+      // Same query for both tables
+      const [rows]: [FavouriteRow[]] = await db.query(`
         SELECT 
           fw.id, 
           fw.type, 
@@ -37,8 +56,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         WHERE fw.userId = ?
       `, [decoded.id]);
 
-      // Procesar los resultados para agrupar los ejercicios por cada WOD favorito
-      const favourites = rows.reduce((acc, row) => {
+      // Group exercises for each fav wod
+      const favourites = rows.reduce<Record<string, Favourite>>((acc, row) => {
         const { id, type, minutes, exerciseId, exerciseName, repetitions } = row;
         if (!acc[id]) {
           acc[id] = {
@@ -49,7 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           };
         }
 
-        if (exerciseId) {
+        if (exerciseId && exerciseName && repetitions !== null) {
           acc[id].exercises.push({ name: exerciseName, repetitions });
         }
 
