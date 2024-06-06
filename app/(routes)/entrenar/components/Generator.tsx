@@ -35,6 +35,7 @@ function Generator() {
   const [countdown, setCountdown] = useState<number | null>(null);
   const [isCountdownRunning, setIsCountdownRunning] = useState<boolean>(false);
   const [pauseButtonText, setPauseButtonText] = useState('Pausar');
+  const [pauseButton, setPauseButton] = useState('hidden')
   const [timerText, setTimerText] = useState('Iniciar temporizador');
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [favourites, setFavourites] = useState<string>('hidden')
@@ -189,6 +190,7 @@ function Generator() {
       setIsCountdownRunning(true);
       setCountdown(3);
       playSoundStart();
+      setPauseButton('')
       setPauseButtonText('Pausar');
       setTimerText('Reiniciar');
 
@@ -364,7 +366,7 @@ function Generator() {
         )}
         <div className='flex gap-3'>
           <Button onClick={handleStartTimer}>{timerText}</Button>
-          <Button onClick={handlePauseTimer}>{pauseButtonText}</Button>
+          <Button className={`${pauseButton}`} onClick={handlePauseTimer}>{pauseButtonText}</Button>
         </div>
       </div>
       { favourites === 'hidden' ? <div className={`mt-8 border border-blue-300 sm:flex-col items-center justify-center px-1 text-center sm:h-28 mx-3 sm:w-[570px] sm:mx-auto sm:my-10 rounded-md ${login}`}>
