@@ -185,7 +185,6 @@ function Generator() {
     if (isPaused) {
       setIsPaused(false);
       setIsRunning(true);
-      setPauseButtonText('Reanudar');
     } else {
       setIsCountdownRunning(true);
       setCountdown(3);
