@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { compare } from 'bcryptjs';
-import { connectToDatabase } from '@/utils/db';
-
+import { connectToDatabase, generateToken } from '@/utils/db';
+import { setCookie } from 'nookies';
 interface LoginData {
   email: string;
   password: string;
@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   
   if (!email || !password) {
-    return res.status(400).json({ message: 'Email y contraseña son requeridos' });
+    return res.status(400).json({ message: 'Email y contraseña requeridos' });
   }
 
   try {
@@ -29,15 +29,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(500).json({ message: 'Error interno del servidor: contraseña no encontrada' });
     }
     const isValidPassword = await compare(password, user[0].password);
-    console.log('Resultado de la comparación de contraseña:', isValidPassword);
-
-    if (!isValidPassword) {
-      return res.status(401).json({ message: 'Credenciales inválidas' });
+    if(isValidPassword) {
+      const infoToken = {
+        id: result[0][0].id,
+        email: result[0][0].email,
+      }
+      const token = generateToken(infoToken);
+      console.log('Generated Token:', token); 
+      setCookie({ res }, 'token', token, {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 60 * 60, // 1 hora
+        path: '/',
+      });
+      console.log('Cookie set successfully');  // Logging cookie set
+      res.json({success: true, token: token})
+    } else {
+      res.json({success: false, message: 'Invalid password'})
     }
-
-    return res.status(200).json({ message: 'Inicio de sesión exitoso' });
   } catch (error) {
-    console.error('Error al iniciar sesión:', error);
+    console.error('Error in login handler:', error);  // Logging the error
     return res.status(500).json({ message: 'Error interno del servidor' });
   }
 }

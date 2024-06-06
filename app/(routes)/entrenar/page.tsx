@@ -1,5 +1,5 @@
 import React from 'react'
-import Generator from './components/Generator'
+import Generator from '../entrenar/components/Generator'
 
 function Page() {
   return (

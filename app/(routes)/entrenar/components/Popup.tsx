@@ -6,9 +6,12 @@ import { X } from 'lucide-react';
 
 interface PopupProps {
   onClose: () => void;
+  text: string,
+  button: string,
+  buttonPath: string
 }
 
-function Popup({ onClose }: PopupProps) {
+function Popup({ onClose, text, button, buttonPath }: PopupProps) {
   const router = useRouter();
   return (
     <div className="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50 z-50">
@@ -17,8 +20,8 @@ function Popup({ onClose }: PopupProps) {
           <h4 className="text-xl mb-2">¡Buen trabajo!</h4>
           <X className='cursor-pointer' onClick={onClose}/>
         </div>
-        <p className="mb-4">Si quieres acceder a otras funcionalidades como el registro de pesos o una calculadora de macros, inicia sesión.</p>
-        <Button onClick={() => router.push('/login')} className="mr-2">Iniciar sesión</Button>
+        <p className="mb-4">{text}</p>
+        <Button onClick={() => router.push(buttonPath)} className="mr-2">{button}</Button>
       </div>
     </div>
   );

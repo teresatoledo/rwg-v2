@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 
 import Footer from "@/components/Footer";
-
+import { parseCookies } from 'nookies';
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={urbanist.className}>
       
-      <div className="sm:bg-[url('/fondo.jpg')] bg-no-repeat bg-cover">
+      <div className="bg-[#E9F7FF] sm:bg-[url('/fondo.png')] bg-no-repeat bg-cover">
         <Header/>
         {children}
         <Footer/>

@@ -1,6 +1,6 @@
 import { Input } from '@/components/ui/input';
 import React, { useState, ChangeEvent } from 'react';
-import { exercises } from '../../empezar/components/Exercises';
+import { exercises } from '../../entrenar/components/Exercises';
 import { ChevronDown } from 'lucide-react';
 import RMDetails from './RMDetails';
 

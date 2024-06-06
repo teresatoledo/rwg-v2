@@ -1,39 +1,64 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Trash2 } from 'lucide-react';
 
 const FavWod = () => {
-  const [favorites, setFavorites] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/get-favorites')
-      .then(response => {
-        setFavorites(response.data.favorites);
+    //Recover fav from DB
+    const fetchFavorites = async () => {
+      try {
+        const response = await fetch('/api/favourites');
+        if (response.ok) {
+          const data = await response.json();
+          setFavourites(data);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Error al obtener los favoritos del usuario:', error);
         setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching favorites:', error);
-        setLoading(false);
-      });
+      }
+    };
+    fetchFavorites();
   }, []);
 
   if (loading) {
     return <div>Cargando...</div>;
   }
 
+  const removeFavourite = async (favouriteId) => {
+    try {
+      const response = await fetch(`/api/favourites?id=${favouriteId}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setFavourites(favourites.filter(favourite => favourite.id !== favouriteId));
+      }
+    } catch (error) {
+      console.log(favouriteId);
+      console.error('Error al eliminar el favorito:', error);
+    }
+  };
+
   return (
-    <div>
-      {favorites.length === 0 ? (
+    <div className='max-h-96 sm:w-[420px] overflow-scroll overflow-x-hidden pt-4'>
+      {favourites.length === 0 ? (
         <p>Todavía no has guardado ningún WOD como favorito</p>
       ) : (
-        <ul>
-          {favorites.map((favorite, index) => (
-            <li key={index}>
-              <p>{favorite.type} - {favorite.time} minutos</p>
-              
+        favourites.map((favourite) => (
+          <ul key={favourite.id} className='border-2 border-slate-300 rounded-md p-4 m-2'>
+            <li className='text-center'>
+              <div className='flex justify-between'>
+                <p className='font-bold'>{favourite.type} - {favourite.minutes} minutos</p>
+                <Trash2 className='w-5 cursor-pointer' onClick={() => removeFavourite(favourite.id)} />
+              </div>
+              {favourite.exercises.map((exercise, exerciseIndex) => (
+                <p key={exerciseIndex}>{exercise.name} - {exercise.repetitions} repeticiones</p>
+              ))}
             </li>
-          ))}
-        </ul>
+          </ul>
+        ))
       )}
     </div>
   );
