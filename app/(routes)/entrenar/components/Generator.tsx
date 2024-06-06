@@ -125,7 +125,7 @@ function Generator() {
     setResultBox('hidden');
     setTime(value);
     const selectedTime = parseInt(value);
-    let min, max;
+    let min = 0, max = 0;
     if (selectedTime === 5) {
       min = 5;
       max = 10;

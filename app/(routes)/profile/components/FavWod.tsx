@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Trash2 } from 'lucide-react';
+interface Exercise {
+  name: string;
+  repetitions: number;
+}
+
+interface Favourite {
+  id: string;
+  type: string;
+  minutes: number;
+  exercises: Exercise[];
+}
 
 const FavWod = () => {
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState<Favourite[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,7 +38,7 @@ const FavWod = () => {
     return <div>Cargando...</div>;
   }
 
-  const removeFavourite = async (favouriteId) => {
+  const removeFavourite = async (favouriteId: any) => {
     try {
       const response = await fetch(`/api/favourites?id=${favouriteId}`, {
         method: 'DELETE',
