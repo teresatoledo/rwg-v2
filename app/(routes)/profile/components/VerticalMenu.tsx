@@ -1,7 +1,10 @@
 import React from 'react'
 
-
-const VerticalMenu = ({ selectedOption, onSelectOption }) => {
+interface VerticalMenuProps {
+  selectedOption: string;
+  onSelectOption: (option: string) => void;
+}
+const VerticalMenu: React.FC<VerticalMenuProps> = ({ selectedOption, onSelectOption }) => {
   return (
     <div className="flex flex-row sm:flex-col gap-2 justify-center bg-white p-4">
       <button
