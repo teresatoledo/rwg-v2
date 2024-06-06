@@ -35,14 +35,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         email: result[0][0].email,
       }
       const token = generateToken(infoToken);
-      console.log('Generated Token:', token); 
       setCookie({ res }, 'token', token, {
         httpOnly: false,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 60 * 60, // 1 hora
         path: '/',
       });
-      console.log('Cookie set successfully');  // Logging cookie set
       res.json({success: true, token: token})
     } else {
       res.json({success: false, message: 'Invalid password'})

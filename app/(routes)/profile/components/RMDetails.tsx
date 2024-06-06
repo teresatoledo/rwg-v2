@@ -29,7 +29,6 @@ const RMDetails: React.FC<RMDetailsProps> = ({ exercise }) => {
 
   useEffect(() => {
     const token = getCookie('token');
-    console.log('Stored Token:', token); // Debugging token retrieval
     setStoredToken(token);
 
     if (token) {

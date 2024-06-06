@@ -36,7 +36,7 @@ const FavWod = () => {
         setFavourites(favourites.filter(favourite => favourite.id !== favouriteId));
       }
     } catch (error) {
-      console.log(favouriteId);
+
       console.error('Error al eliminar el favorito:', error);
     }
   };
