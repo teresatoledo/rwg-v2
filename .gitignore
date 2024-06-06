@@ -19,7 +19,6 @@
 # misc
 .DS_Store
 *.pem
-db.ts
 # debug
 npm-debug.log*
 yarn-debug.log*
