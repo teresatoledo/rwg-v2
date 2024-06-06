@@ -212,7 +212,7 @@ function Generator() {
   };
 
   const handlePauseTimer = () => {
-    setIsPaused(true);
+    setIsPaused(!isPaused);
   };
 
   const formatTime = (time: number) => {
