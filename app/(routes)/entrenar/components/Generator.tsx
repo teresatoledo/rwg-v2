@@ -34,7 +34,7 @@ function Generator() {
   const [showPopup, setShowPopup] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [isCountdownRunning, setIsCountdownRunning] = useState<boolean>(false);
-  const [pauseButton, setPauseButton] = useState('hidden');
+  const [pauseButtonText, setPauseButtonText] = useState('Pausar');
   const [timerText, setTimerText] = useState('Iniciar temporizador');
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [favourites, setFavourites] = useState<string>('hidden')
@@ -102,6 +102,8 @@ function Generator() {
       setTimer(parseInt(finalTime) * 60);
       setIsRunning(false);
       setIsPaused(false);
+      setPauseButtonText('Pausar');
+      setTimerText('Iniciar temporizador');
     }
   };
 
@@ -181,13 +183,14 @@ function Generator() {
   const handleStartTimer = () => {
     if (isPaused) {
       setIsPaused(false);
-      setTimerText('Reiniciar');
+      setIsRunning(true);
+      setPauseButtonText('Pausar');
     } else {
       setIsCountdownRunning(true);
       setCountdown(3);
       playSoundStart();
+      setPauseButtonText('Pausar');
       setTimerText('Reiniciar');
-      setPauseButton('');
 
       const countdownInterval = setInterval(() => {
         setCountdown(prev => {
@@ -361,10 +364,10 @@ function Generator() {
         )}
         <div className='flex gap-3'>
           <Button onClick={handleStartTimer}>{timerText}</Button>
-          <Button className={`${pauseButton}`} onClick={handlePauseTimer}>Pausar</Button>
+          <Button onClick={handlePauseTimer}>{pauseButtonText}</Button>
         </div>
       </div>
-      { favourites === 'hidden' ? <div className={`mt-8 border border-blue-300 sm:flex sm:flex-col items-center justify-center px-1 text-center sm:h-28 mx-3 sm:w-[570px] sm:mx-auto sm:my-10 rounded-md ${login}`}>
+      { favourites === 'hidden' ? <div className={`mt-8 border border-blue-300 sm:flex-col items-center justify-center px-1 text-center sm:h-28 mx-3 sm:w-[570px] sm:mx-auto sm:my-10 rounded-md ${login}`}>
         <p className='dark:text-black p-2'>¿Quieres guardar tus entrenamientos y hacer un seguimiento de tus marcas?</p>
         <Button onClick={() => router.push('/login')} className='mt-3 mb-3 sm:mb-0'>Inicia sesión</Button>
       </div> : <div></div>}
