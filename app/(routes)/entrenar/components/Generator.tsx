@@ -213,6 +213,7 @@ function Generator() {
 
   const handlePauseTimer = () => {
     setIsPaused(!isPaused);
+    setPauseButtonText('Reanudar');
   };
 
   const formatTime = (time: number) => {
