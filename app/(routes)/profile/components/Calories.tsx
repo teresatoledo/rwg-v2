@@ -9,15 +9,26 @@ const Calories = () => {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [activityLevel, setActivityLevel] = useState('');
+  const [goal, setGoal] = useState('');
   const [calories, setCalories] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleCalculate = () => {
+    // Reset error message
+    setErrorMessage('');
+
+    // Validate all fields are filled
+    if (!gender || !age || !weight || !height || !activityLevel || !goal) {
+      setErrorMessage('Todos los campos son obligatorios');
+      return;
+    }
+
     const ageNum = parseFloat(age);
     const weightNum = parseFloat(weight);
     const heightNum = parseFloat(height);
 
     if (isNaN(ageNum) || isNaN(weightNum) || isNaN(heightNum)) {
-      alert('Introduce datos válidos para la edad, el peso y la altura.');
+      setErrorMessage('Introduce datos válidos para la edad, el peso y la altura.');
       return;
     }
 
@@ -48,6 +59,14 @@ const Calories = () => {
       default:
         calculatedCalories = 0;
     }
+
+    // Adjust calories based on goal
+    if (goal === 'loseWeight') {
+      calculatedCalories -= 200;
+    } else if (goal === 'gainMuscle') {
+      calculatedCalories += 200;
+    }
+
     setCalories(calculatedCalories);
   };
 
@@ -57,6 +76,10 @@ const Calories = () => {
 
   const handleActivity = (value: string) => {
     setActivityLevel(value);
+  };
+
+  const handleGoal = (value: string) => {
+    setGoal(value);
   };
 
   const handleAge = (event: ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +102,7 @@ const Calories = () => {
 
   return (
     <div className='flex flex-col justify-center items-center mx-auto'>
-      <h2 className="text-lg font-semibold mb-4 hidden sm:flex">Calculadora de calorías</h2>
+      <h2 className="text-lg font-semibold mb-4 ">Calculadora de calorías</h2>
       <div className="flex flex-col space-y-4">
         <Select value={gender} onValueChange={handleGender}>
           <SelectTrigger className="w-[250px]">
@@ -133,11 +156,26 @@ const Calories = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
+        <Select value={goal} onValueChange={handleGoal}>
+          <SelectTrigger className="w-[250px]">
+            <SelectValue placeholder="Selecciona tu objetivo" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem value="loseWeight">Bajar de peso</SelectItem>
+              <SelectItem value="maintenance">Mantenimiento</SelectItem>
+              <SelectItem value="gainMuscle">Ganar masa muscular</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
         <Button onClick={handleCalculate} className='w-[250px]'>Calcular calorías</Button>
         {calories !== 0 && (
-          <div >
+          <div>
             <p className='mb-8'><span className='font-bold'>Calorías Necesarias:</span> {calories} kcal/día</p>
           </div>
+        )}
+        {errorMessage && (
+          <p className='text-red-500'>{errorMessage}</p>
         )}
       </div>
     </div>

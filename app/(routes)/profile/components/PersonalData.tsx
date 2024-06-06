@@ -44,7 +44,7 @@ const PersonalData = () => {
   };
   return (
     <div className='text-center sm:text-start'>
-      <h2 className="text-lg font-semibold mb-4 ">Datos Personales</h2>
+      <h2 className="text-lg font-semibold mb-4 ">Datos personales</h2>
       <p>Nombre: {userData.firstName}</p>
       <p>Apellido: {userData.lastName}</p>
       <p>Correo: {userData.email}</p>

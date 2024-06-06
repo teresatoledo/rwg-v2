@@ -8,9 +8,10 @@ function Footer() {
         Teresa Toledo | 2024
       </div>
       <div className="flex items-center justify-between gap-1 sm:gap-3">
-        <Linkedin className='h-5 bg-white rounded-sm' href='https://www.linkedin.com/in/teresatoledo' target='_blank'/>
-        <Github className='h-5 bg-white rounded-sm' href='https://github.com/teresatoledo' target='_blank'/>
-        <Mail className='h-5 bg-white rounded-sm' href='mailto:teresatoledolara@gmail.com'/>
+        <a href='https://www.linkedin.com/in/teresatoledo'><Linkedin className='h-5 bg-white rounded-sm'  target='_blank'/></a>
+        <a href='https://github.com/teresatoledo'><Github className='h-5 bg-white rounded-sm' target='_blank'/></a>
+        <a href='mailto:teresatoledolara@gmail.com'><Mail className='h-5 bg-white rounded-sm' /></a>
+        
       </div>
     </footer>
   )

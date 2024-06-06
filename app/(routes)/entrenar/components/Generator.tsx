@@ -208,7 +208,6 @@ function Generator() {
 
   const handlePauseTimer = () => {
     setIsPaused(true);
-    setTimerText('Reanudar')
   };
 
   const formatTime = (time: number) => {
