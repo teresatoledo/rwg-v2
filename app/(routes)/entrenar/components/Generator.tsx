@@ -5,11 +5,12 @@ import { Separator } from '@/components/ui/separator';
 import React, { useState, MouseEvent, useEffect, useRef } from 'react';
 import { Exercise, exercises } from './Exercises';
 import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer"
-import { Heart, X } from 'lucide-react';
+import { Heart, Info, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Howl, Howler } from 'howler';
 import Popup from './Popup';
 import { getCookie } from '@/utils/cookies';
+import Tooltip from './Tooltip';
 
 //YT URL is different from what is needed to embed the video. This function does that URL conversion.
 function getYouTubeID(url: string): string {
@@ -315,7 +316,7 @@ function Generator() {
         </div>
         <div className='flex flex-col items-center'>
           <Button className='mb-3' onClick={handleClick}>Generar</Button>
-          <div className={`${error} text-red-500 font-bold`}>Vaya, parece que te falta algo por seleccionar.</div>
+          <div className={`${error} text-red-500 font-bold text-center`}>Vaya, parece que te falta algo por seleccionar.</div>
         </div>
         <div className={`border-2 border-blue-300 p-4 ${resultBox}`}>
           <div className='flex justify-center gap-3'>
@@ -323,6 +324,7 @@ function Generator() {
             <p>{finalTime} minutos</p>
             <p>-</p>
             <p>{type}</p>
+            <Tooltip/>
           </div>
           <Separator />
           <div>
