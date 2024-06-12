@@ -13,7 +13,7 @@ Este proyecto permite a los usuarios apasionados del CrossFit generar entrenamie
 
 ## Demostración
 ![Página principal de RWG](public/main.jpg)
-https://random-wod-generator.vercel.app/
+Como más vale un enlace que mil palabras, podéis encontrarlo aquí: https://random-wod-generator.vercel.app/
 
 
 ## Características
@@ -41,5 +41,5 @@ Las tecnologías utilizadas para este proyecto son las siguientes:
 - Shadcn me ha permitido implementar componentes de forma sencilla para darle un aspecto más cohesionado a toda la web.
 ## Licencia
 Este proyecto está bajo la licencia MIT.
-## Autor
+## Autora
 Hecho con ❤️ y 💪 por mí, Teresa Toledo.
