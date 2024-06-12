@@ -1,6 +1,5 @@
 
 # Random WOD Generator
-![Logo](public/logo.png) 
 Este proyecto permite a los usuarios apasionados del CrossFit generar entrenamientos de forma aleatoria. La idea de este proyecto surge a raíz de la necesidad de tener una herramienta para esos días en los que quería entrenar, pero no sabía qué hacer.
 
 ## Tabla de contenidos
