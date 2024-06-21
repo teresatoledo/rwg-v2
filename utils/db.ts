@@ -30,4 +30,4 @@ export const verifyToken = (token: any) => {
   } catch (error) {
     return null;
   }
-}
+} 
