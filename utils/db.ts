@@ -7,7 +7,7 @@ export async function connectToDatabase() {
   const connection = await mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    password: "2P!&$98&8a2kde6",
+    password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   });
   await connection.connect();
